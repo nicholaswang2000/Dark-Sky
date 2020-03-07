@@ -30,9 +30,6 @@ class APIManager {
             
             // Decode JSON and serialization
             let request = try! JSONDecoder().decode(WeatherRequest.self, from: data)
-            
-            print(request.currently)
-            
             completion(request.currently)
             
         }

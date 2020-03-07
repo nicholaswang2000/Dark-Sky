@@ -23,6 +23,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var exitBtn: UIButton!
     @IBOutlet weak var fjeowapijfiwoefp: UILabel!
     @IBOutlet weak var locationField: UITextField!
+    @IBOutlet weak var coordLbl: UILabel!
     @IBOutlet weak var dateView: UIView!
     
     var myLocation:CLLocation!      // Current Location
@@ -37,11 +38,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         myLocation = locations[0]
-        print(myLocation.coordinate.latitude, myLocation.coordinate.longitude)
         
         manager.stopUpdatingLocation()
         defaultUrl = "\(urlKey)\(myLocation.coordinate.latitude),\(myLocation.coordinate.longitude)"
         if withTime {
+            coordLbl.text = "\(myLocation.coordinate.latitude), \(myLocation.coordinate.longitude)"
             if withLoc {
                 getApi(locUrl)
             } else {
@@ -69,7 +70,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let nsdate = NSDate(timeIntervalSince1970: Double(curr?.time ?? 1583510400))
         let date = Date(date: nsdate)
         let dateStr = df.string(from: date)
-        print(dateStr)
         timeLbl.text = "\(dateStr)"
         summaryLbl.text = curr?.summary
         iconImg.image = UIImage(named: curr!.icon)
@@ -104,7 +104,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func confirm(_ sender: Any) {
         
         let unixDate = Int(picker.date.timeIntervalSince1970)
-        print(unixDate)
         
         if (unixDate > Int(NSDate().timeIntervalSince1970)) {
             presentAlert("Please provide a date before today")
@@ -116,38 +115,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if locationField.text == "" {
                 withLoc = false
                 url = defaultUrl + ",\(unixDate)"
+                
+                locationManager(self.manager, didUpdateLocations: [self.myLocation])
+                
+                self.viewDidLoad()
+                dateView.isHidden = true
             } else {
                 withLoc = true
-
-                print("Hello 1")
                 
                 getCoordinateFrom(address: locationField.text!) { coordinate, error in
-                    guard let coordinate = coordinate, error == nil else { return }
+                    guard let coordinate = coordinate, error == nil else {
+                        self.presentAlert("Please enter a valid location")
+                        return
+                    }
                     // don't forget to update the UI from the main thread
                     DispatchQueue.main.async {
                         print(self.locationField.text!, "Location:", coordinate) // Rio de Janeiro, Brazil Location: CLLocationCoordinate2D(latitude: -22.9108638, longitude: -43.2045436)
-
-                        var wantedLoc: CLLocation
-                        wantedLoc = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-                        self.locUrl = "\(self.urlKey)\(wantedLoc.coordinate.latitude),\(wantedLoc.coordinate.longitude),\(unixDate)"
-
-                        print(self.url)
+                        
+                        self.locUrl = "\(self.urlKey)\(coordinate.latitude),\(coordinate.longitude),\(unixDate)"
+                        
+                        self.myLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
                         
                         self.locationManager(self.manager, didUpdateLocations: [self.myLocation])
                         self.viewDidLoad()
+                        self.dateView.isHidden = true
                     }
                 }
             }
         }
-        
-        dateView.isHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        fjeowapijfiwoefp.isHidden = false
-        timeLbl.isHidden = false
-        confirmBtn.isHidden = true
-        exitBtn.isHidden = true
         if let dest = segue.destination as? DetailViewController {
             dest.curr = self.curr
         }
