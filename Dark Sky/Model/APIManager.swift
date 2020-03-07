@@ -12,8 +12,7 @@ import CoreLocation
 
 class APIManager {
     
-    static func getLocation(_ myLocation:CLLocation, _ completion: @escaping (Weather) -> ()) {
-        let urlStr = "https://api.darksky.net/forecast/8d29ba93fca67043efd36cda49c585e6/\(myLocation.coordinate.latitude),\(myLocation.coordinate.longitude)"
+    static func getLocation(_ urlStr:String, _ completion: @escaping (Weather) -> ()) {
         
         guard let url = URL(string: urlStr) else {
             return

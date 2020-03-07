@@ -15,46 +15,37 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var iconImg: UIImageView!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var summary: UILabel!
-    @IBOutlet weak var nearestStormDistance: UILabel!
-    @IBOutlet weak var nearestStormbearing: UILabel!
     @IBOutlet weak var temperature: UILabel!
-    @IBOutlet weak var apparentTemperature: UILabel!
     @IBOutlet weak var dewPoint: UILabel!
     @IBOutlet weak var humidity: UILabel!
     @IBOutlet weak var pressure: UILabel!
     @IBOutlet weak var windSpeed: UILabel!
-    @IBOutlet weak var windGust: UILabel!
     @IBOutlet weak var windBearing: UILabel!
-    @IBOutlet weak var cloudCover: UILabel!
     @IBOutlet weak var visibility: UILabel!
-    @IBOutlet weak var ozone: UILabel!
     @IBOutlet weak var uvindex: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        time.text = "\(NSDate(timeIntervalSince1970: Double(curr?.time ?? 1583510400)))"
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd/yyyy"
+        let nsdate = NSDate(timeIntervalSince1970: Double(curr?.time ?? 1583510400))
+        let date = Date(date: nsdate)
+        let dateStr = df.string(from: date)
+        
+        time.text = dateStr
         summary.text = curr.summary
-        nearestStormDistance.text = "\(curr.nearestStormDistance)"
-        nearestStormbearing.text = "\(curr.nearestStormBearing)"
-        temperature.text = "\(curr.temperature)"
-        apparentTemperature.text = "\(curr.apparentTemperature)"
-        dewPoint.text = "\(curr.dewPoint)"
-        humidity.text = "\(curr.humidity)"
-        pressure.text = "\(curr.pressure)"
-        windSpeed.text = "\(curr.windSpeed)"
-        windGust.text = "\(curr.windGust)"
-        windBearing.text = "\(curr.windBearing)"
-        cloudCover.text = "\(curr.cloudCover)"
-        visibility.text = "\(curr.visibility)"
-        ozone.text = "\(curr.ozone)"
-        uvindex.text = "\(curr.uvIndex)"
+        temperature.text = "Temp: \(curr.temperature)"
+        dewPoint.text = "Dew Point: \(curr.dewPoint)"
+        humidity.text = "Humidity: \(curr.humidity)"
+        pressure.text = "Pressure: \(curr.pressure)"
+        windSpeed.text = "Wind Speed: \(curr.windSpeed)"
+        windBearing.text = "Wind Bearing: \(curr.windBearing)"
+        visibility.text = "Visibility: \(curr.visibility)"
+        uvindex.text = "UV Index: \(curr.uvIndex)"
         iconImg.image = UIImage(named: curr.icon)
 
         // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func goBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
     
     /*

@@ -16,7 +16,7 @@ class WeatherRequest: Decodable {
     }
     
     enum DataKeys: String, CodingKey {
-        case time, summary, icon, nearestStormDistance, nearestStormBearing, temperature, apparentTemperature, dewPoint, humidity, pressure, windSpeed, windGust, windBearing, cloudCover, visibility, ozone, uvIndex
+        case time, summary, icon,  temperature, dewPoint, humidity, pressure, windSpeed, windBearing, visibility, uvIndex
     }
     
     required init(from decoder: Decoder) throws {
@@ -35,19 +35,13 @@ struct Weather: Decodable {
     let time:Int
     let summary:String
     let icon:String
-    let nearestStormDistance:Int
-    let nearestStormBearing:Int
     let temperature:Double
-    let apparentTemperature:Double
     let dewPoint:Double
     let humidity:Double
     let pressure:Double
     let windSpeed:Double
-    let windGust:Double
     let windBearing:Int
-    let cloudCover:Double
-    let visibility:Int
-    let ozone:Double
+    let visibility:Double
     let uvIndex:Int
     
 }
