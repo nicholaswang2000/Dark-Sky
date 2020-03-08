@@ -23,9 +23,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var windBearing: UILabel!
     @IBOutlet weak var visibility: UILabel!
     @IBOutlet weak var uvindex: UILabel!
+    @IBOutlet weak var exitBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Helpers.designButtons(exitBtn)
         
         let df = DateFormatter()
         df.dateFormat = "MM/dd/yyyy"
@@ -46,6 +49,10 @@ class DetailViewController: UIViewController {
         iconImg.image = UIImage(named: curr.icon)
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func exit(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

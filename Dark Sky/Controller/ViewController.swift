@@ -14,6 +14,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let manager = CLLocationManager()
     
+    @IBOutlet weak var otherSetting: UIButton!
+    @IBOutlet weak var exitBut: UIButton!
+    @IBOutlet weak var confirmBut: UIButton!
+    @IBOutlet weak var moreInfo: UIButton!
     @IBOutlet weak var picker: UIDatePicker!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
@@ -41,6 +45,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         manager.stopUpdatingLocation()
         defaultUrl = "\(urlKey)\(myLocation.coordinate.latitude),\(myLocation.coordinate.longitude)"
+
         if withTime {
             coordLbl.text = "\(myLocation.coordinate.latitude), \(myLocation.coordinate.longitude)"
             if withLoc {
@@ -81,6 +86,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         dateView.isHidden = true
         withTime = false
+        
+        Helpers.designButtons(moreInfo)
+        Helpers.designButtons(exitBut)
+        Helpers.designButtons(confirmBut)
+        Helpers.designButtons(otherSetting)
+        picker.setValue(UIColor.white, forKeyPath: "textColor")
         
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
