@@ -14,14 +14,18 @@ class SchoolViewController: UIViewController {
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var loadingLbl: UILabel!
     @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var reasonLbl: UILabel!
     
     var progressTimer: Timer!
-    let randomArr = ["Loading Machine Learning", "Doing some AI", "Calculating the Weathers", "Seeing if your classes are worth going to", "Calculating your shortest paths", "Decentralizing some blockchains", "Updating the progress bar", "Playing some Hearthstone", "Checking if ozone depletion will kill you today", "Analyzing wind patterns", "Seeing if you have anything better to do", "Calculating opportunity cost of skipping", "Getting your Internet of Things ready", "Buying Facebook and deleting it"]
+    let randomArr = ["Loading Machine Learning", "Doing some AI", "Calculating the Weathers", "Seeing if your classes are worth going to", "Calculating your shortest paths", "Decentralizing some blockchains", "Updating the progress bar", "Playing some Hearthstone", "Checking if ozone depletion will kill you today", "Analyzing wind patterns", "Seeing if you have anything better to do", "Calculating opportunity cost of skipping", "Getting your Internet of Things ready", "Buying Facebook and deleting it", "Modifying client user database", "Pulling additional API methods", "Eating a taco"]
+    
+    var curr: Weather!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         yesNoLbl.text = ""
+        reasonLbl.text = ""
         
         Helpers.designButtons(backBtn)
 
@@ -48,8 +52,9 @@ class SchoolViewController: UIViewController {
         if (progressBar.progress == 1.0) {
             loadingLbl.text = ""
             progressTimer.invalidate()
-            let number = Int.random(in: 0 ..< 2)
-            if number == 1 {
+            let f = Helpers.goToSchool(curr)
+            reasonLbl.text = f
+            if f == "" {
                 yesNoLbl.text = "YES"
             } else {
                 yesNoLbl.text = "NO"

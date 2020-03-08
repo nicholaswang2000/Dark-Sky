@@ -261,20 +261,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YP-Fm-geh">
-                                <rect key="frame" x="149" y="630" width="116" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Exit"/>
-                                <connections>
-                                    <action selector="exit:" destination="w7x-Bk-PAy" eventType="touchUpInside" id="3My-Xb-kr7"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9D-2W-AdW">
                                 <rect key="frame" x="64" y="571" width="287" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Should I go to school in this weather"/>
                                 <connections>
-                                    <segue destination="1Ke-D4-86O" kind="presentation" id="ZZo-vC-wPC"/>
+                                    <action selector="school:" destination="w7x-Bk-PAy" eventType="touchUpInside" id="Zkj-dd-hXb"/>
+                                    <segue destination="1Ke-D4-86O" kind="presentation" identifier="school" id="ZZo-vC-wPC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YP-Fm-geh">
+                                <rect key="frame" x="166" y="628" width="83" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Exit"/>
+                                <connections>
+                                    <action selector="exit:" destination="w7x-Bk-PAy" eventType="touchUpInside" id="3My-Xb-kr7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -344,6 +345,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntd-30-Gba">
+                                <rect key="frame" x="59" y="558" width="296" height="129"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="u4V-RQ-VUF"/>
@@ -353,6 +361,7 @@
                         <outlet property="backBtn" destination="Pjb-UL-M6f" id="5GH-r9-OrO"/>
                         <outlet property="loadingLbl" destination="dno-Rc-qui" id="inp-Hu-b0Q"/>
                         <outlet property="progressBar" destination="2d6-jZ-dwg" id="eHd-Sw-cCc"/>
+                        <outlet property="reasonLbl" destination="ntd-30-Gba" id="g09-CW-cc1"/>
                         <outlet property="yesNoLbl" destination="f6W-6M-AoM" id="sbc-wV-WF5"/>
                     </connections>
                 </viewController>
