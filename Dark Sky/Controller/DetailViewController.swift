@@ -24,11 +24,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var visibility: UILabel!
     @IBOutlet weak var uvindex: UILabel!
     @IBOutlet weak var exitBtn: UIButton!
+    @IBOutlet weak var schoolBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Helpers.designButtons(exitBtn)
+        Helpers.designButtons(schoolBtn)
         
         let df = DateFormatter()
         df.dateFormat = "MM/dd/yyyy"

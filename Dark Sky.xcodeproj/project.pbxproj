@@ -12,6 +12,7 @@
 		001E991E241223F10081D6D6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001E991D241223F10081D6D6 /* APIManager.swift */; };
 		001E992024123FDC0081D6D6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001E991F24123FDC0081D6D6 /* DetailViewController.swift */; };
 		00219EA72414737700F03CAB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00219EA62414737700F03CAB /* Helpers.swift */; };
+		00219EA92414957A00F03CAB /* SchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00219EA82414957A00F03CAB /* SchoolViewController.swift */; };
 		00AC95E4240F031E00EC0C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AC95E3240F031E00EC0C8B /* AppDelegate.swift */; };
 		00AC95E6240F031E00EC0C8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AC95E5240F031E00EC0C8B /* SceneDelegate.swift */; };
 		00AC95E8240F031E00EC0C8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AC95E7240F031E00EC0C8B /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 		001E991D241223F10081D6D6 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		001E991F24123FDC0081D6D6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		00219EA62414737700F03CAB /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		00219EA82414957A00F03CAB /* SchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolViewController.swift; sourceTree = "<group>"; };
 		00AC95E0240F031E00EC0C8B /* Dark Sky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dark Sky.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00AC95E3240F031E00EC0C8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00AC95E5240F031E00EC0C8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				00AC95E7240F031E00EC0C8B /* ViewController.swift */,
 				001E991F24123FDC0081D6D6 /* DetailViewController.swift */,
+				00219EA82414957A00F03CAB /* SchoolViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				00219EA72414737700F03CAB /* Helpers.swift in Sources */,
 				001E991C2412232C0081D6D6 /* Weather.swift in Sources */,
 				001E992024123FDC0081D6D6 /* DetailViewController.swift in Sources */,
+				00219EA92414957A00F03CAB /* SchoolViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
